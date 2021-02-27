@@ -1,0 +1,12 @@
+/* || SIDE NAV BAR */
+
+.menu {
+  width: 250px;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.nav-about {
+  position: fixed;
+  bottom: 2rem;
+}

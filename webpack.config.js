@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -8,10 +9,14 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
+    writeToDisk: true,
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Todo | Guides',
+      template: 'src/index.html',
+    }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
-    new HtmlWebpackPlugin(),
   ],
   output: {
     filename: 'bundle.js',
@@ -25,7 +30,16 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: 'javascript/auto',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/',
+            },
+          },
+        ],
       },
       {
         test: /\.m?js$/,
@@ -36,6 +50,10 @@ module.exports = {
             presets: ['@babel/preset-env'],
           },
         },
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
       },
     ],
   },
