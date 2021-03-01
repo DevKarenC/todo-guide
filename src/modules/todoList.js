@@ -25,7 +25,7 @@ export class TodoList {
     this.todos = todos;
   }
   addTodo(title) {
-    this.todos.push(new todoItem(title));
+    this.todos.push(new TodoItem(title));
     return this.todos;
   }
   deleteTodo(todoIndex) {
