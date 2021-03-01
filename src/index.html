@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Todo | Guides</title>
+    <title>Todo List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -11,21 +11,22 @@
   </head>
   <body>
     <!-- SIDE NAV BAR -->
-    <aside class="menu">
+    <aside class="menu has-background-white">
       <div class="nav-user-welcome">
         <p>Welcome!</p>
         <p class="nav-date"></p>
         <p class="nav-quote"></p>
       </div>
-      <p class="menu-label">Guides</p>
-      <ul class="menu-list">
-        <li><a>Algorithms</a></li>
-        <li><a>Data Structures</a></li>
-        <li><a>Front-end Development</a></li>
-        <li><a>Leetcode</a></li>
-      </ul>
-      <p class="menu-label">Your Guides</p>
-      <ul class="menu-list"></ul>
+      <div class="nav-list">
+        <p class="menu-label">Guides</p>
+        <ul class="menu-list">
+          <li><a>Algorithms</a></li>
+          <li><a>Data Structures</a></li>
+          <li><a>Front-end Development</a></li>
+          <li><a>Leetcode</a></li>
+        </ul>
+      </div>
+      <div class="nav-add-list"><button>+ New List</button></div>
       <div class="nav-about">
         <a href="https://github.com/DevKarenC/todo-guide" target="_blank">
           <img src="./assets/images/GitHub-Mark-32px.png" alt="Github logo" />
@@ -38,7 +39,10 @@
         </div>
       </div>
     </aside>
-    <!-- TODO GUIDES CONTENT -->
-    <main></main>
+    <!-- TODO LISTS CONTENT -->
+    <main>
+      <div class="main-list-title"></div>
+      <div class="main-task-wrapper"></div>
+    </main>
   </body>
 </html>

@@ -1,12 +1,33 @@
+/* || GENERAL */
+
+body {
+  display: flex;
+}
+
 /* || SIDE NAV BAR */
 
 .menu {
-  width: 250px;
+  min-width: 16rem;
   height: 100vh;
   padding: 2rem;
 }
 
+.nav-add-list {
+  position: fixed;
+  bottom: 6rem;
+}
+
 .nav-about {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   bottom: 2rem;
+  min-width: 12rem;
+}
+
+/* || MAIN CONTENT */
+
+main {
+  background-color: #f08080;
+  width: 100vw;
 }
