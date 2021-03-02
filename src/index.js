@@ -27,7 +27,7 @@ function displayTodoList(name) {
   const todoListStars = document.querySelector('.todo-list-stars');
   const todoListTaskContainer = document.querySelector('.task-container');
   todoListName.textContent = name;
-  todoListTaskContainer.append(displayTask('Internet', '50%', '4'));
+  // todoListTaskContainer.append(displayTask('Internet', '50%', '4'));
 }
 
 displayTodoList('Algorithms');
@@ -38,18 +38,33 @@ function countTodoListStars() {}
 
 function displayTask(name) {
   const taskContainer = document.createElement('div');
+  const taskStatus = document.createElement('div');
   const taskName = document.createElement('div');
   const taskDueDate = document.createElement('div');
-  const taskStatus = document.createElement('div');
   const taskStar = document.createElement('div');
+  const checkbox = document.createElement('input');
+  const checkboxState = document.createElement('div');
+  const checkboxLabel = document.createElement('label');
 
-  taskName.textContent = name;
+  taskStatus.classList.add(
+    'task-status',
+    'pretty',
+    'p-default',
+    'p-round',
+    'p-fill',
+  );
   taskName.classList.add('task-name');
   taskDueDate.classList.add('task-due-date');
-  taskStatus.classList.add('task-status');
-  taskStar.classList.add('task-stars');
+  taskStar.classList.add('task-star');
   taskContainer.classList.add('task-item');
-  taskContainer.append(taskName, taskStar);
+  checkboxState.classList.add('state');
+
+  checkbox.type = 'checkbox';
+  checkboxState.append(checkboxLabel);
+  taskStatus.append(checkbox, checkboxState);
+  taskName.textContent = name;
+
+  taskContainer.append(taskStatus, taskName, taskStar);
 
   return taskContainer;
 }
