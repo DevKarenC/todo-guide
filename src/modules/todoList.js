@@ -1,9 +1,13 @@
 class TodoItem {
-  constructor(title, dueDate, important, notes) {
+  constructor(id, title, dueDate, important, notes) {
+    this.id = id;
     this.title = title;
     this.dueDate = dueDate;
     this.important = important;
     this.notes = notes;
+  }
+  setId(id) {
+    this.id = id;
   }
   setTitle(title) {
     this.title = title;
@@ -20,16 +24,23 @@ class TodoItem {
 }
 
 export class TodoList {
-  constructor(name, todos) {
+  constructor(id, name, todos) {
+    this.id = id;
     this.name = name;
     this.todos = todos;
   }
-  addTodo(title) {
-    this.todos.push(new TodoItem(title));
+  addTodo() {
+    this.todos.push(new TodoItem());
     return this.todos;
   }
   deleteTodo(todoIndex) {
     this.todos.splice(todoIndex, 1);
     return this.todos;
   }
+  renameTodoList(newName) {
+    this.name = newName;
+    return this.name;
+  }
 }
+
+export const todoLists = [];

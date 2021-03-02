@@ -2,23 +2,18 @@ import { doc } from 'prettier';
 import './index.css';
 import { displayDate } from './modules/date';
 // import { displayQuote } from './modules/quote';
-import { TodoList } from './modules/todoList';
-import { displayNewTodoList } from './modules/addTodoList';
+import { TodoList } from './modules/TodoList';
+import { displayNewTodoList } from './modules/AddTodoList';
+import { showDefaultTodoLists } from './modules/DefaultTodo';
 
 function view() {
   displayDate();
-  // displayQuote();
-  const list = new TodoList('Todo List Sample', []);
-  list.addTodo('Big O');
-  list.addTodo('Stack');
-  list.addTodo('Queue');
-  list.addTodo('Binary Search Tree');
-  list.deleteTodo(1);
 }
 
 view();
 
 displayNewTodoList();
+showDefaultTodoLists();
 
 function displayTodoList(name) {
   const todoListHeading = document.querySelector('.todo-list-heading');
@@ -30,7 +25,7 @@ function displayTodoList(name) {
   // todoListTaskContainer.append(displayTask('Internet', '50%', '4'));
 }
 
-displayTodoList('Algorithms');
+// displayTodoList('Algorithms');
 
 function calculateTodoListProgress() {}
 

@@ -1,25 +1,30 @@
-import { TodoList } from './todoList';
+import { TodoList, todoLists } from './TodoList';
 
-export function displayNewTodoList() {
-  const navListContainer = document.querySelector('.menu-list');
-  const newListButton = document.querySelector('.nav-add-list');
+const navListContainer = document.querySelector('.menu-list');
+const newListButton = document.querySelector('.button-add-list');
 
-  function handleNewListButton(name = 'Untitled List') {
-    const newList = document.createElement('li');
-    newList.innerHTML = `<a>${name}</a>`;
-    navListContainer.append(newList);
-  }
+export function showNewTodoList(name = 'Untitled List') {
+  const newList = document.createElement('li');
+  newList.innerHTML = `<a>${name}</a><i class="fas fa-times"></i>`;
+  navListContainer.append(newList);
+}
 
-  newListButton.addEventListener('click', () => {
-    handleNewListButton();
-    addNewTodoList();
+export function addNewTodoList(name = 'Untitled List') {
+  const newList = new TodoList(0, name, []);
+  todoLists.push(newList);
+  console.log(todoLists);
+}
+
+export function assignTodoListIndex() {
+  todoLists.forEach((list, i) => {
+    list.id = i;
   });
 }
 
-const todoLists = [];
-
-function addNewTodoList() {
-  const newList = new TodoList('Untitled List', []);
-  todoLists.push(newList);
-  console.log(todoLists);
+export function displayNewTodoList() {
+  newListButton.addEventListener('click', () => {
+    showNewTodoList();
+    addNewTodoList();
+    assignTodoListIndex();
+  });
 }
