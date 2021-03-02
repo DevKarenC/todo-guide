@@ -5,8 +5,22 @@
     <title>Todo List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
-      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400&display=swap"
+      rel="stylesheet"
     />
   <script defer src="bundle.js"></script></head>
   <body>
@@ -17,36 +31,82 @@
         <p class="nav-date"></p>
         <p class="nav-quote"></p>
       </div>
-      <div class="nav-list">
-        <p class="menu-label">Todo Lists</p>
-        <ul class="menu-list">
-          <li><a>Algorithms</a></li>
-          <li><a>Data Structures</a></li>
-          <li><a>Front-end Development</a></li>
-          <li><a>Leetcode</a></li>
-        </ul>
-      </div>
-      <div class="nav-add-list"><button>+ New List</button></div>
       <div class="nav-about">
         <a href="https://github.com/DevKarenC/todo-guide" target="_blank">
           <img src="assets/images/GitHub-Mark-32px.png" alt="Github logo" />
         </a>
-        <button class="button is-rounded">About</button>
+        <button>About</button>
         <div class="modal">
           <div class="modal-background"></div>
           <div class="modal-content">Hello</div>
           <button class="modal-close is-large" aria-label="close"></button>
         </div>
       </div>
+      <hr />
+      <div class="nav-list">
+        <ul class="menu-list">
+          <li><a>Algorithms</a><i class="fas fa-times"></i></li>
+          <li><a>Data Structures</a><i class="fas fa-times"></i></li>
+          <li><a>Front-end Development</a><i class="fas fa-times"></i></li>
+          <li><a>Leetcode</a><i class="fas fa-times"></i></li>
+        </ul>
+      </div>
+      <div class="nav-add-list">
+        <button><span>+</span><span>New List</span></button>
+      </div>
     </aside>
     <!-- TODO LISTS CONTENT -->
     <main>
-      <div class="todo-list-heading">
-        <div class="todo-list-name"></div>
-        <div class="todo-list-progress"></div>
-        <div class="todo-list-stars"></div>
+      <div class="todo-list-main">
+        <div class="todo-list-heading">
+          <div class="todo-list-name"></div>
+          <div class="todo-list-progress"></div>
+          <div class="todo-list-stars"></div>
+        </div>
+        <div class="task-container">
+          <div class="task-item">
+            <div class="task-status">
+              <input type="checkbox" />
+            </div>
+            <div class="task-name">Internet</div>
+            <div class="task-due-date">Mar 7, 2021</div>
+            <div class="task-star">&star;</div>
+          </div>
+          <div class="task-item">
+            <div class="task-status">
+              <input type="checkbox" />
+            </div>
+            <div class="task-name">Internet</div>
+            <div class="task-due-date">Mar 7, 2021</div>
+            <div class="task-star">&star;</div>
+          </div>
+          <div class="task-item">
+            <div class="task-status">
+              <input type="checkbox" />
+            </div>
+            <div class="task-name">Internet</div>
+            <div class="task-due-date">Mar 7, 2021</div>
+            <div class="task-star">&star;</div>
+          </div>
+        </div>
+        <div class="add-new-task">
+          <button><span>+</span><span>Add a Task</span></button>
+        </div>
       </div>
-      <div class="task-container"></div>
+      <div class="task-details">
+        <div class="task-detail-status">
+          <div class="task-status">
+            <input type="checkbox" />
+          </div>
+        </div>
+        <div class="task-detail-name">Internet</div>
+        <div class="task-detail-star">&star;</div>
+        <div class="task-detail-due-date">Mar 7, 2021</div>
+        <div class="task-detail-notes">
+          <input type="text" />
+        </div>
+        <div class="task-detail-delete"><i class="far fa-trash-alt"></i></div>
+      </div>
     </main>
   </body>
 </html>
