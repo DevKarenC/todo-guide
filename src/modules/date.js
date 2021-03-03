@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 function getDate() {
-  return moment().format('dddd, MMM Do YYYY');
+  return moment().format('ddd, MMM Do YYYY');
 }
 
 function displayDate() {
