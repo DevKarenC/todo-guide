@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -6,10 +7,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
-  devtool: 'inline-source-map',
+  devtool: 'eval-cheap-module-source-map',
+  // devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
-    writeToDisk: true,
+    // writeToDisk: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -17,6 +19,7 @@ module.exports = {
       template: 'src/index.html',
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    new webpack.IgnorePlugin(/^\.\/locale\/(en)\.js$/, /moment$/),
   ],
   output: {
     filename: 'bundle.js',
@@ -48,6 +51,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
+            cacheDirectory: true,
           },
         },
       },
