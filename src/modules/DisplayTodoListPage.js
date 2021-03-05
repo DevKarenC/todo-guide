@@ -1,5 +1,5 @@
 import { todoLists } from './TodoList';
-import { navListContainer } from './AddTodoList';
+import { navListContainer, renderTodoList } from './AddTodoList';
 import { showImageOnLoad } from './ShowImageOnLoad';
 import { renderNewTodo, assignTodoIndex } from './AddTodo';
 import { editTodo } from './EditTodo';
@@ -8,7 +8,7 @@ const main = document.querySelector('main');
 const todoListMain = document.createElement('div');
 const todoListHeading = document.createElement('div');
 const todoListName = document.createElement('div');
-const todoListNameText = document.createElement('p');
+const todoListInput = document.createElement('input');
 const taskContainer = document.createElement('div');
 const addNewTask = document.createElement('div');
 const button = document.createElement('button');
@@ -27,14 +27,15 @@ todoInput.name = 'todoInput';
 let currentTodoList;
 
 function renderTodoListPage(e) {
-  todoListNameText.textContent = e.target.textContent;
+  console.log(e);
+  todoListInput.value = e.target.textContent;
   plusSpan.textContent = '+';
   todoInput.type = 'text';
   todoInput.placeholder = 'Add a Todo';
   todoForm.append(todoInput);
   button.append(plusSpan, todoForm);
   addNewTask.append(button);
-  todoListName.append(todoListNameText);
+  todoListName.append(todoListInput);
   todoListHeading.append(todoListName);
   todoListMain.append(todoListHeading, taskContainer, addNewTask);
   main.append(todoListMain);
@@ -51,6 +52,7 @@ function handleDisplayPage(e) {
     removeTodoListPage();
     renderTodoListPage(e);
     renderNewTodo(currentTodos, taskContainer);
+    // currentTodoList.renameTodoList(e.target.value);
     editTodo(currentTodos);
   } else if (e.target.tagName === 'I') {
     removeTodoListPage();
@@ -87,5 +89,10 @@ function displayPage() {
     }
   });
 }
+
+todoListInput.addEventListener('change', (e) => {
+  currentTodoList.renameTodoList(e.target.value);
+  renderTodoList(todoLists, navListContainer);
+});
 
 export { displayPage };

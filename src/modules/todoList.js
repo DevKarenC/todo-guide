@@ -59,7 +59,6 @@ class TodoList {
   }
   renameTodoList(newTitle) {
     this.title = newTitle;
-    return this.title;
   }
 }
 
