@@ -1,7 +1,8 @@
 import { todoLists } from './TodoList';
 import { navListContainer } from './AddTodoList';
 import { showImageOnLoad } from './ShowImageOnLoad';
-import { handleAddNewTask, renderNewTodo } from './AddTodo';
+import { renderNewTodo, assignTodoIndex } from './AddTodo';
+import { editTodo } from './EditTodo';
 
 const main = document.querySelector('main');
 const todoListMain = document.createElement('div');
@@ -46,9 +47,11 @@ function removeTodoListPage() {
 function handleDisplayPage(e) {
   if (e.target.tagName === 'A') {
     currentTodoList = todoLists[e.target.dataset.index];
+    const currentTodos = currentTodoList.todos;
     removeTodoListPage();
     renderTodoListPage(e);
-    renderNewTodo(currentTodoList.todos, taskContainer);
+    renderNewTodo(currentTodos, taskContainer);
+    editTodo(currentTodos);
   } else if (e.target.tagName === 'I') {
     removeTodoListPage();
     showImageOnLoad();
@@ -61,18 +64,25 @@ function displayPage() {
   });
   plusSpan.addEventListener('click', () => {
     const todoTitle = document.todoForm.todoInput.value;
+    const currentTodos = currentTodoList.todos;
     if (todoTitle) {
-      handleAddNewTask(currentTodoList, todoTitle);
-      renderNewTodo(currentTodoList.todos, taskContainer);
+      currentTodoList.addTodo(0, todoTitle, false, '', false, '');
+      renderNewTodo(currentTodos, taskContainer);
+      assignTodoIndex(currentTodos);
+      editTodo(currentTodos);
       document.todoForm.reset();
     }
   });
   todoForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const todoTitle = this.todoInput.value;
+    const currentTodos = currentTodoList.todos;
     if (todoTitle) {
-      handleAddNewTask(currentTodoList, todoTitle);
-      renderNewTodo(currentTodoList.todos, taskContainer);
+      currentTodoList.addTodo(0, todoTitle, false, '', false, '');
+      renderNewTodo(currentTodos, taskContainer);
+      assignTodoIndex(currentTodos);
+      editTodo(currentTodos);
+      console.log(currentTodos);
       this.reset();
     }
   });
