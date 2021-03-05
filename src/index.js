@@ -1,35 +1,23 @@
-import { doc } from 'prettier';
 import './index.css';
-import { displayDate } from './modules/date';
+import { showImageOnLoad } from './modules/ShowImageOnLoad';
+import { displayDate } from './modules/Date';
 // import { displayQuote } from './modules/quote';
 import { TodoList } from './modules/TodoList';
 import { displayNewTodoList } from './modules/AddTodoList';
 import { showDefaultTodoLists } from './modules/DefaultTodo';
+import { deleteTodoList } from './modules/DeleteTodoList';
+import { displayPage } from './modules/DisplayTodoListPage';
 
 function view() {
   displayDate();
 }
 
 view();
-
-displayNewTodoList();
+showImageOnLoad();
 showDefaultTodoLists();
-
-function displayTodoList(name) {
-  const todoListHeading = document.querySelector('.todo-list-heading');
-  const todoListName = document.querySelector('.todo-list-name');
-  const todoListProgress = document.querySelector('.todo-list-progress');
-  const todoListStars = document.querySelector('.todo-list-stars');
-  const todoListTaskContainer = document.querySelector('.task-container');
-  todoListName.textContent = name;
-  // todoListTaskContainer.append(displayTask('Internet', '50%', '4'));
-}
-
-// displayTodoList('Algorithms');
-
-function calculateTodoListProgress() {}
-
-function countTodoListStars() {}
+displayNewTodoList();
+deleteTodoList();
+displayPage();
 
 function displayTask(name) {
   const taskContainer = document.createElement('div');

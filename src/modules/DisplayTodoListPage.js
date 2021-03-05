@@ -1,6 +1,6 @@
 import { todoLists } from './TodoList';
 import { navListContainer } from './AddTodoList';
-// import { showImageOnLoad } from './ShowImageOnLoad';
+import { showImageOnLoad } from './ShowImageOnLoad';
 import { handleAddNewTask, renderNewTodo } from './AddTodo';
 
 const main = document.querySelector('main');
@@ -12,6 +12,7 @@ const taskContainer = document.createElement('div');
 const addNewTask = document.createElement('div');
 const button = document.createElement('button');
 const plusSpan = document.createElement('span');
+const todoForm = document.createElement('form');
 const todoInput = document.createElement('input');
 
 todoListMain.classList.add('todo-list-main');
@@ -19,6 +20,8 @@ todoListHeading.classList.add('todo-list-heading');
 todoListName.classList.add('todo-list-name');
 taskContainer.classList.add('task-container');
 addNewTask.classList.add('add-new-task');
+todoForm.name = 'todoForm';
+todoInput.name = 'todoInput';
 
 let currentTodoList;
 
@@ -27,7 +30,8 @@ function renderTodoListPage(e) {
   plusSpan.textContent = '+';
   todoInput.type = 'text';
   todoInput.placeholder = 'Add a Todo';
-  button.append(plusSpan, todoInput);
+  todoForm.append(todoInput);
+  button.append(plusSpan, todoForm);
   addNewTask.append(button);
   todoListName.append(todoListNameText);
   todoListHeading.append(todoListName);
@@ -47,7 +51,7 @@ function handleDisplayPage(e) {
     renderNewTodo(currentTodoList.todos, taskContainer);
   } else if (e.target.tagName === 'I') {
     removeTodoListPage();
-    // showImageOnLoad();
+    showImageOnLoad();
   }
 }
 
@@ -55,10 +59,18 @@ function displayPage() {
   navListContainer.addEventListener('click', (e) => {
     handleDisplayPage(e);
   });
-  plusSpan.addEventListener('click', (e) => {
-    const todoTitle = e.target.nextSibling.value;
+  plusSpan.addEventListener('click', () => {
+    const todoTitle = document.todoForm.todoInput.value;
     handleAddNewTask(currentTodoList, todoTitle);
     renderNewTodo(currentTodoList.todos, taskContainer);
+    document.todoForm.reset();
+  });
+  todoForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const todoTitle = this.todoInput.value;
+    handleAddNewTask(currentTodoList, todoTitle);
+    renderNewTodo(currentTodoList.todos, taskContainer);
+    this.reset();
   });
 }
 
