@@ -61,16 +61,20 @@ function displayPage() {
   });
   plusSpan.addEventListener('click', () => {
     const todoTitle = document.todoForm.todoInput.value;
-    handleAddNewTask(currentTodoList, todoTitle);
-    renderNewTodo(currentTodoList.todos, taskContainer);
-    document.todoForm.reset();
+    if (todoTitle) {
+      handleAddNewTask(currentTodoList, todoTitle);
+      renderNewTodo(currentTodoList.todos, taskContainer);
+      document.todoForm.reset();
+    }
   });
   todoForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const todoTitle = this.todoInput.value;
-    handleAddNewTask(currentTodoList, todoTitle);
-    renderNewTodo(currentTodoList.todos, taskContainer);
-    this.reset();
+    if (todoTitle) {
+      handleAddNewTask(currentTodoList, todoTitle);
+      renderNewTodo(currentTodoList.todos, taskContainer);
+      this.reset();
+    }
   });
 }
 
