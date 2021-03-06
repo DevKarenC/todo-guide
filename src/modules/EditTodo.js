@@ -12,6 +12,8 @@ function editTodo(todosList) {
         console.log(todosList);
       } else if (e.target.type === 'checkbox') {
         currentTodo.setStatus();
+      } else {
+        // console.log('Todo Clicked');
       }
     });
   });

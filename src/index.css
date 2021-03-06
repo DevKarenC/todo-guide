@@ -155,7 +155,10 @@ main {
   height: 6rem;
 }
 
-.todo-list-name {
+.todo-list-name input {
+  background: transparent;
+  border: 0;
+  outline: none;
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
@@ -178,7 +181,7 @@ main {
   border: 1px solid white;
   border-radius: 5px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
 }
 
 .task-item:last-child {
@@ -205,7 +208,7 @@ input[type='checkbox'] {
 }
 
 .task-star {
-  background-color: gray;
+  background-color: #ff6347;
   font-size: 1.25rem;
   color: #fff;
   cursor: pointer;
@@ -223,6 +226,7 @@ input[type='checkbox'] {
 }
 
 .add-new-task > button {
+  width: 100%;
   display: flex;
   align-items: center;
   border: 0;
@@ -236,12 +240,48 @@ input[type='checkbox'] {
   margin-right: 0.5rem;
 }
 
-.add-new-task span:last-child {
-  font-size: 1.2rem;
+.add-new-task input {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  color: white;
 }
+
+.add-new-task form {
+  width: 100%;
+}
+
+/* || TASK DETAILS */
 
 .task-details {
   background-color: white;
   width: 24rem;
   padding: 2rem;
+}
+
+.task-detail-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0 1rem 0;
+}
+
+.task-detail-due-date,
+.task-detail-notes {
+  margin-bottom: 1rem;
+}
+
+.textarea {
+  width: 100%;
+  height: auto;
+  outline: none;
+  border: 1px solid grey;
+}
+
+.task-detail-delete {
+  text-align: right;
+  font-size: 1.1rem;
 }
