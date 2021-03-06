@@ -260,6 +260,7 @@ input[type='checkbox'] {
   background-color: white;
   width: 24rem;
   padding: 2rem;
+  transition: all 1s ease-in;
 }
 
 .task-detail-top {
