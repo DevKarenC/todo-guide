@@ -27,7 +27,6 @@ todoInput.name = 'todoInput';
 let currentTodoList;
 
 function renderTodoListPage(e) {
-  console.log(e);
   todoListInput.value = e.target.textContent;
   plusSpan.textContent = '+';
   todoInput.type = 'text';
@@ -52,8 +51,8 @@ function handleDisplayPage(e) {
     removeTodoListPage();
     renderTodoListPage(e);
     renderNewTodo(currentTodos, taskContainer);
-    // currentTodoList.renameTodoList(e.target.value);
     editTodo(currentTodos);
+    renderNewTodo(currentTodos, taskContainer);
   } else if (e.target.tagName === 'I') {
     removeTodoListPage();
     showImageOnLoad();
@@ -84,7 +83,6 @@ function displayPage() {
       renderNewTodo(currentTodos, taskContainer);
       assignTodoIndex(currentTodos);
       editTodo(currentTodos);
-      console.log(currentTodos);
       this.reset();
     }
   });

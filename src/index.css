@@ -188,6 +188,15 @@ main {
   margin: 0;
 }
 
+.task-item input {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  width: 100%;
+}
+
 .task-status {
   display: flex;
   margin-right: 1rem;
@@ -198,13 +207,21 @@ input[type='checkbox'] {
 }
 
 .task-name {
-  flex: 4;
-  font-size: 1rem;
+  flex: 10;
 }
 
 .task-due-date {
-  flex: 1;
+  flex: 3;
   font-size: 1rem;
+}
+
+.task-due-date input {
+  text-align: center;
+}
+
+input[type='date']::-webkit-clear-button,
+input[type='date']::-webkit-inner-spin-button {
+  display: none;
 }
 
 .task-star {
@@ -215,6 +232,13 @@ input[type='checkbox'] {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.task-star,
+.task-notes,
+.task-delete {
+  width: 30px;
+  text-align: center;
 }
 
 .add-new-task {
@@ -268,6 +292,22 @@ input[type='checkbox'] {
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0 1rem 0;
+}
+
+.task-detail-status {
+  display: flex;
+  justify-content: center;
+}
+
+.task-detail-status input {
+  margin-right: 1rem;
+}
+
+.task-detail-name input {
+  background: transparent;
+  outline: none;
+  border: 0;
+  font-size: 1rem;
 }
 
 .task-detail-due-date,
