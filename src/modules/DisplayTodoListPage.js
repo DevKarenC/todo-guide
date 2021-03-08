@@ -83,6 +83,7 @@ function displayPage() {
       renderNewTodo(currentTodos, taskContainer);
       assignTodoIndex(currentTodos);
       editTodo(currentTodos);
+      console.log(currentTodos);
       this.reset();
     }
   });
