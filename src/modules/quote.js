@@ -3,7 +3,7 @@ function displayQuote() {
   fetch('https://api.quotable.io/random')
     .then((response) => response.json())
     .then((data) => {
-      quoteWrapper.textContent = `${data.content} -${data.author}`;
+      quoteWrapper.textContent = `${data.content} - ${data.author}`;
     });
 }
 

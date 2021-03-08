@@ -1,4 +1,3 @@
-import { doc } from 'prettier';
 import todoListImage from '../assets/images/undraw_working.svg';
 
 function showImageOnLoad() {
