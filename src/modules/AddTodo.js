@@ -1,29 +1,32 @@
 function renderNewTodo(list = [], container) {
+  assignTodoIndex(list);
   container.innerHTML = list
-    .map((listElement, i) => {
+    .map((listElement) => {
       return `
-        <div class="task-item" data-index=${i}>
+        <div class="task-item" data-index=${listElement.id}>
           <div class="task-status">
-            <input type="checkbox" data-index=${i} ${
+            <input type="checkbox" data-index=${listElement.id} ${
         listElement.status ? 'checked' : ''
       }>
           </div>
-          <div class="task-name" data-index=${i}>
-            <input class="task-name-input" type="text" data-index=${i} value='${
-        listElement.title
-      }' >
+          <div class="task-name" data-index=${listElement.id}>
+            <input class="task-name-input" type="text" data-index=${
+              listElement.id
+            } value='${listElement.title}' >
           </div>
-          <div class="task-due-date" data-index=${i}>
-            <input type="date" data-index=${i} value=${listElement.dueDate}>
+          <div class="task-due-date" data-index=${listElement.id}>
+            <input type="date" data-index=${listElement.id} value=${
+        listElement.dueDate
+      }>
           </div>
-          <div class="task-star" data-index=${i}>${
+          <div class="task-star" data-index=${listElement.id}>${
         listElement.important ? '★' : '☆'
       }</div>
           <div class="task-notes">
-            <i class="far fa-edit" data-index=${i}></i>
+            <i class="far fa-edit" data-index=${listElement.id}></i>
           </div>
           <div class="task-delete">
-            <i class="far fa-trash-alt" data-index=${i}></i>
+            <i class="far fa-trash-alt" data-index=${listElement.id}></i>
           </div>
         </div>
       `;

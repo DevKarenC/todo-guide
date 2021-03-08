@@ -16,6 +16,7 @@ function editTodo(currentTodos) {
       } else if (e.target.classList.contains('fa-trash-alt')) {
         const taskContainer = document.querySelector('.task-container');
         console.log(e);
+
         currentTodos.splice(e.target.dataset.index, 1);
         todo.remove();
         // console.log(todo);

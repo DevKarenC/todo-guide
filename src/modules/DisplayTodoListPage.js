@@ -69,7 +69,7 @@ function displayPage() {
     if (todoTitle) {
       currentTodoList.addTodo(0, todoTitle, false, '', false, '');
       renderNewTodo(currentTodos, taskContainer);
-      assignTodoIndex(currentTodos);
+      // assignTodoIndex(currentTodos);
       editTodo(currentTodos);
       document.todoForm.reset();
     }
@@ -81,7 +81,7 @@ function displayPage() {
     if (todoTitle) {
       currentTodoList.addTodo(0, todoTitle, false, '', false, '');
       renderNewTodo(currentTodos, taskContainer);
-      assignTodoIndex(currentTodos);
+      // assignTodoIndex(currentTodos);
       editTodo(currentTodos);
       console.log(currentTodos);
       this.reset();
