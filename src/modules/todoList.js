@@ -61,7 +61,21 @@ class TodoList {
   }
 }
 
-const todoLists = [];
+const todoLists = JSON.parse(localStorage.getItem('todoLists')) || [];
+const localStorageTodoLists = todoLists.map((todoList) => {
+  todoList = new TodoList(todoList.id, todoList.title, todoList.todos);
+  todoList.todos = todoList.todos.map((todo) => {
+    todo = new TodoItem(
+      todo.id,
+      todo.title,
+      todo.status,
+      todo.dueDate,
+      todo.important,
+      todo.notes,
+    );
+    return todo;
+  });
+  return todoList;
+});
 
-export { TodoList, todoLists };
-// export const todoLists = JSON.parse(localStorage.getItem('todoLists')) || [];
+export { TodoList, todoLists, localStorageTodoLists };
