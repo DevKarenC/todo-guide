@@ -1,8 +1,7 @@
 import { todoLists } from './TodoList';
 import { renderNewTodo } from './AddTodo';
 
-function editTodo(currentTodos, todoList) {
-  const taskContainer = document.querySelector('.task-container');
+function editTodo(currentTodos) {
   const todos = document.querySelectorAll('.task-item');
   todos.forEach(function (todo) {
     todo.addEventListener('click', function (e) {
@@ -15,10 +14,13 @@ function editTodo(currentTodos, todoList) {
       } else if (e.target.classList.contains('fa-edit')) {
         toggleModal(currentTodo);
       } else if (e.target.classList.contains('fa-trash-alt')) {
+        const taskContainer = document.querySelector('.task-container');
         console.log(e);
         currentTodos.splice(e.target.dataset.index, 1);
-        renderNewTodo(todoLists[e.target.dataset.index].todos, taskContainer);
-
+        todo.remove();
+        // console.log(todo);
+        // Array.from(taskContainer.children).splice(e.target.dataset.index, 1);
+        // renderNewTodo(currentTodos, taskContainer);
         console.log(currentTodos);
       }
     });

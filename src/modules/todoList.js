@@ -55,7 +55,6 @@ class TodoList {
   }
   deleteTodo(todoIndex) {
     this.todos.splice(todoIndex, 1);
-    return this.todos;
   }
   renameTodoList(newTitle) {
     this.title = newTitle;
