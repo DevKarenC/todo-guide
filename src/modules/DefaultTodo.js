@@ -1,22 +1,23 @@
-import {
-  showNewTodoList,
-  addNewTodoList,
-  assignTodoListIndex,
-} from './AddTodoList';
+import { renderTodoList, addNewTodoList } from './AddTodoList';
+import { todoLists } from './TodoList';
 
-function addDefaultTodoLists() {
-  addNewTodoList('Algorithms');
-  addNewTodoList('Data Structures');
-  addNewTodoList('Front-end Development');
-  addNewTodoList('Leetcode');
+const navListContainer = document.querySelector('.menu-list');
+
+// function addDefaultTodoLists() {
+//   addNewTodoList('Algorithms');
+//   addNewTodoList('Data Structures');
+//   addNewTodoList('Projects');
+//   addNewTodoList('Leetcode');
+// }
+
+// renderTodoList('Algorithms', navListContainer);
+// renderTodoList('Data Structures', navListContainer);
+// renderTodoList('Projects', navListContainer);
+// renderTodoList('Leetcode', navListContainer);
+
+function showDefaultTodoLists() {
+  // addDefaultTodoLists();
+  renderTodoList(todoLists, navListContainer);
 }
 
-export function showDefaultTodoLists() {
-  showNewTodoList('Algorithms');
-  showNewTodoList('Data Structures');
-  showNewTodoList('Front-end Development');
-  showNewTodoList('Leetcode');
-}
-
-addDefaultTodoLists();
-assignTodoListIndex();
+export { showDefaultTodoLists };

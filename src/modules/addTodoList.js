@@ -1,41 +1,30 @@
-import { TodoList, todoLists } from './TodoList';
+import { TodoList, todoLists, localStorageTodoLists } from './TodoList';
+import { assignIndex } from './AddTodo';
 
 const navListContainer = document.querySelector('.menu-list');
 const newListButton = document.querySelector('.button-add-list');
 
 function renderTodoList(lists = [], container) {
+  assignIndex(lists);
   container.innerHTML = lists
-    .map((list, i) => {
-      return `<li><a data-index=${i}>${list.title}</a><i data-index=${i} class="fas fa-times"></i></li>`;
+    .map((list) => {
+      return `<li><a data-index=${list.id}>${list.title}</a><i data-index=${list.id} class="fas fa-times"></i></li>`;
     })
     .join('');
 }
 
 function addNewTodoList(title = 'Untitled List') {
   const newList = new TodoList(0, title, []);
-  todoLists.push(newList);
-  // localStorage.setItem('todoLists', JSON.stringify(todoLists));
-  renderTodoList(todoLists, navListContainer);
-}
-
-function assignTodoListIndex() {
-  todoLists.forEach((list, i) => {
-    list.id = i;
-  });
+  localStorageTodoLists.push(newList);
+  renderTodoList(localStorageTodoLists, navListContainer);
+  localStorage.setItem('todoLists', JSON.stringify(localStorageTodoLists));
 }
 
 function displayNewTodoList() {
   newListButton.addEventListener('click', () => {
-    renderTodoList(todoLists, navListContainer);
+    renderTodoList(localStorageTodoLists, navListContainer);
     addNewTodoList();
-    assignTodoListIndex();
   });
 }
 
-export {
-  navListContainer,
-  renderTodoList,
-  addNewTodoList,
-  assignTodoListIndex,
-  displayNewTodoList,
-};
+export { navListContainer, renderTodoList, addNewTodoList, displayNewTodoList };

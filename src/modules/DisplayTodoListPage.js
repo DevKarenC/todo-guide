@@ -1,7 +1,7 @@
-import { todoLists } from './TodoList';
+import { todoLists, localStorageTodoLists } from './TodoList';
 import { navListContainer, renderTodoList } from './AddTodoList';
 import { showImageOnLoad } from './ShowImageOnLoad';
-import { renderNewTodo, assignTodoIndex } from './AddTodo';
+import { renderNewTodo } from './AddTodo';
 import { editTodo } from './EditTodo';
 
 const main = document.querySelector('main');
@@ -46,13 +46,12 @@ function removeTodoListPage() {
 
 function handleDisplayPage(e) {
   if (e.target.tagName === 'A') {
-    currentTodoList = todoLists[e.target.dataset.index];
+    currentTodoList = localStorageTodoLists[e.target.dataset.index];
     const currentTodos = currentTodoList.todos;
     removeTodoListPage();
     renderTodoListPage(e);
     renderNewTodo(currentTodos, taskContainer);
     editTodo(currentTodos);
-    renderNewTodo(currentTodos, taskContainer);
   } else if (e.target.tagName === 'I') {
     removeTodoListPage();
     showImageOnLoad();
@@ -69,7 +68,7 @@ function displayPage() {
     if (todoTitle) {
       currentTodoList.addTodo(0, todoTitle, false, '', false, '');
       renderNewTodo(currentTodos, taskContainer);
-      // assignTodoIndex(currentTodos);
+      localStorage.setItem('todoLists', JSON.stringify(localStorageTodoLists));
       editTodo(currentTodos);
       document.todoForm.reset();
     }
@@ -81,9 +80,8 @@ function displayPage() {
     if (todoTitle) {
       currentTodoList.addTodo(0, todoTitle, false, '', false, '');
       renderNewTodo(currentTodos, taskContainer);
-      // assignTodoIndex(currentTodos);
+      localStorage.setItem('todoLists', JSON.stringify(localStorageTodoLists));
       editTodo(currentTodos);
-      console.log(currentTodos);
       this.reset();
     }
   });
@@ -91,7 +89,8 @@ function displayPage() {
 
 todoListInput.addEventListener('change', (e) => {
   currentTodoList.renameTodoList(e.target.value);
-  renderTodoList(todoLists, navListContainer);
+  renderTodoList(localStorageTodoLists, navListContainer);
+  localStorage.setItem('todoLists', JSON.stringify(localStorageTodoLists));
 });
 
 export { displayPage };

@@ -1,5 +1,7 @@
+import { editTodo } from './EditTodo';
+
 function renderNewTodo(list = [], container) {
-  assignTodoIndex(list);
+  assignIndex(list);
   container.innerHTML = list
     .map((listElement) => {
       return `
@@ -34,10 +36,10 @@ function renderNewTodo(list = [], container) {
     .join('');
 }
 
-function assignTodoIndex(todos) {
-  todos.forEach((todo, i) => {
-    todo.id = i;
+function assignIndex(elements) {
+  elements.forEach((element, i) => {
+    element.id = i;
   });
 }
 
-export { renderNewTodo, assignTodoIndex };
+export { renderNewTodo, assignIndex };

@@ -1,12 +1,11 @@
-import { todoLists } from './TodoList';
-import { renderTodoList, assignTodoListIndex } from './AddTodoList';
-
-const navListContainer = document.querySelector('.menu-list');
+import { todoLists, localStorageTodoLists } from './TodoList';
+import { navListContainer, renderTodoList } from './AddTodoList';
 
 function handleDelete(e) {
   if (e.target.classList.contains('fa-times')) {
-    todoLists.splice(e.target.dataset.index, 1);
-    renderTodoList(todoLists, navListContainer);
+    localStorageTodoLists.splice(e.target.dataset.index, 1);
+    renderTodoList(localStorageTodoLists, navListContainer);
+    localStorage.setItem('todoLists', JSON.stringify(localStorageTodoLists));
   }
 }
 

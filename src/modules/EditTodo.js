@@ -1,4 +1,4 @@
-import { todoLists } from './TodoList';
+import { todoLists, localStorageTodoLists } from './TodoList';
 import { renderNewTodo } from './AddTodo';
 
 function editTodo(currentTodos) {
@@ -9,29 +9,45 @@ function editTodo(currentTodos) {
       if (e.target.classList.contains('task-star')) {
         toggleStar(e);
         currentTodo.setImportant();
+        localStorage.setItem(
+          'todoLists',
+          JSON.stringify(localStorageTodoLists),
+        );
       } else if (e.target.type === 'checkbox') {
         currentTodo.setStatus();
+        localStorage.setItem(
+          'todoLists',
+          JSON.stringify(localStorageTodoLists),
+        );
       } else if (e.target.classList.contains('fa-edit')) {
         toggleModal(currentTodo);
+        localStorage.setItem(
+          'todoLists',
+          JSON.stringify(localStorageTodoLists),
+        );
       } else if (e.target.classList.contains('fa-trash-alt')) {
-        const taskContainer = document.querySelector('.task-container');
-        console.log(e);
-
         currentTodos.splice(e.target.dataset.index, 1);
         todo.remove();
-        // console.log(todo);
-        // Array.from(taskContainer.children).splice(e.target.dataset.index, 1);
-        // renderNewTodo(currentTodos, taskContainer);
-        console.log(currentTodos);
+        localStorage.setItem(
+          'todoLists',
+          JSON.stringify(localStorageTodoLists),
+        );
       }
     });
     todo.addEventListener('change', (e) => {
       const currentTodo = currentTodos[e.target.dataset.index];
       if (e.target.classList.contains('task-name-input')) {
         currentTodo.setTitle(e.target.value);
+        localStorage.setItem(
+          'todoLists',
+          JSON.stringify(localStorageTodoLists),
+        );
       } else if (e.target.type === 'date') {
         currentTodo.setDueDate(e.target.value);
-        console.log(currentTodo);
+        localStorage.setItem(
+          'todoLists',
+          JSON.stringify(localStorageTodoLists),
+        );
       }
     });
   });
@@ -68,6 +84,7 @@ function toggleModal(todo) {
 
   textarea.addEventListener('change', function () {
     todo.setNotes(this.value);
+    localStorage.setItem('todoLists', JSON.stringify(localStorageTodoLists));
   });
 
   modalCloseButton.addEventListener('click', function () {
