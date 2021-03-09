@@ -214,6 +214,10 @@ input[type='checkbox'] {
   flex: 10;
 }
 
+.task-name input {
+  width: 100%;
+}
+
 .task-due-date {
   flex: 3;
   font-size: 1rem;
