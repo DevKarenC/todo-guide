@@ -2,16 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.js',
   devtool: 'eval-cheap-module-source-map',
-  // devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
-    // writeToDisk: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
