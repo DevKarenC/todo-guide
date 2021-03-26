@@ -1,4 +1,4 @@
-import { todoLists, localStorageTodoLists } from './TodoList';
+import { localStorageTodoLists } from './TodoList';
 import { navListContainer, renderTodoList } from './AddTodoList';
 
 function handleDelete(e) {

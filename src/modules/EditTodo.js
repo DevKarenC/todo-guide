@@ -1,5 +1,4 @@
-import { todoLists, localStorageTodoLists } from './TodoList';
-import { renderNewTodo } from './AddTodo';
+import { localStorageTodoLists } from './TodoList';
 
 function editTodo(currentTodos) {
   const todos = document.querySelectorAll('.task-item');

@@ -1,4 +1,4 @@
-import { TodoList, todoLists, localStorageTodoLists } from './TodoList';
+import { TodoList, localStorageTodoLists } from './TodoList';
 import { assignIndex } from './AddTodo';
 
 const navListContainer = document.querySelector('.menu-list');
