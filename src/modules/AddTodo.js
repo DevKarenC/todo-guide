@@ -1,5 +1,3 @@
-import { editTodo } from './EditTodo';
-
 function renderNewTodo(list = [], container) {
   assignIndex(list);
   container.innerHTML = list
